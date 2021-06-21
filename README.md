@@ -1,5 +1,5 @@
-# teste-recruiter-grupoparvi
+# Desafio Python Web Scraping
 
-# Objetivo do repositório
+## :pushpin: Objetivo do repositório 
 
-* Centralizar a automação de um processo de coleta de dados (Web Scraping) de um website e extraí-los para um arquivo CSV. 
+* Centralizar o desenvolvimento da automação de um processo de coleta de dados (Web Scraping) de um website e extraí-los para um arquivo CSV. 
