@@ -1,17 +1,30 @@
 from Utilities.Utilities import Utilities
+from selectors import selectors
 
 
 class Parvi:
-    def __init__(self):
-        __slots__ = 'robot'
+    __slots__ = 'robot', 'SELECTORS'
 
-    def __init__(self):
+    def __init__(self, SELECTORS):
         self.robot = Utilities()
+        self.SELECTORS = SELECTORS
 
-    def select_url(self):
+    def start_browser(self):
         self.robot.open_chrome()
 
+    def select_url(self, url):
+        self.robot.browser.get(url)
 
-parvi = Parvi()
+    def cookies_confirm(self):
+        button_ok = self.SELECTORS['BUTTONS']['COOKIES']
+        yes = self.SELECTORS['BUTTONS']['COOKIES']
+        if(self.robot.find(button_ok)):
+            self.robot.click(button_ok)
+            return self.robot.click(button_ok)
 
-parvi.select_url()
+
+parvi = Parvi(selectors)
+
+parvi.start_browser()
+parvi.select_url('https://www.bbc.com/portuguese')
+parvi.cookies_confirm()
