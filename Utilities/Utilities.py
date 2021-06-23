@@ -27,7 +27,7 @@ class Utilities:
     def find(self, selector, by=By.CSS_SELECTOR):
         wait = WebDriverWait(self.browser, 100)
         by = self._verify_type_selector(selector)
-        return wait.until(EC.presence_of_element_located((by, selector)))
+        return wait.until(EC.presence_of_all_elements_located((by, selector)))
 
     def find_class(self, selector, by=By.CLASS_NAME):
         wait = WebDriverWait(self.browser, 100)
