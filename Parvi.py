@@ -21,16 +21,16 @@ class Parvi:
             self.robot.click(button_ok)
             return self.robot.click(button_ok)
 
-    def test(self):
-        teste = self.SELECTORS['LINK']['TESTE']
-        extraiu = self.robot.find(teste)
-        inserido = extraiu.text
-        print(inserido)
+    def extract_notices(self):
+        noticia = self.SELECTORS['LINK']['NOTICE']
+        for noticia in self.robot.find_class(noticia):
+            print(noticia.get_attribute('title'))
+            print(noticia.get_attribute('href'))
 
 
 parvi = Parvi(selectors)
 
 parvi.start_browser()
-parvi.select_url('https://www.bbc.com/portuguese')
-parvi.cookies_confirm()
-parvi.test()
+parvi.select_url('https://www.globo.com/')
+# parvi.cookies_confirm()
+parvi.extract_notices()
