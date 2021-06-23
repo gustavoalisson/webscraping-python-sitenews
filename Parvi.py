@@ -23,7 +23,7 @@ class Parvi:
 
     def extract_notices(self):
         noticia = self.SELECTORS['LINK']['NOTICE']
-        for noticia in self.robot.find_class(noticia):
+        for noticia in self.robot.find_class(noticia)[:10]:
             print(noticia.get_attribute('title'))
             print(noticia.get_attribute('href'))
 
