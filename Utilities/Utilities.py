@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC, wait
 
 
 class Utilities:
@@ -19,7 +19,7 @@ class Utilities:
         self.browser.maximize_window()
 
     def _verify_type_selector(self, selector):
-        is_xpath = '//' in selector
+        is_xpath = '/' or '//' in selector
         print(selector, ">>>", is_xpath)
         by = By.XPATH if (is_xpath) else By.CSS_SELECTOR
         return by
@@ -28,6 +28,14 @@ class Utilities:
         wait = WebDriverWait(self.browser, 100)
         by = self._verify_type_selector(selector)
         return wait.until(EC.presence_of_element_located((by, selector)))
+
+    def find_class(self, selector, by=By.CLASS_NAME):
+        wait = WebDriverWait(self.browser, 100)
+        return wait.until(EC.presence_of_all_elements_located((by, selector)))
+
+    def get_attribute(self, selector, attribute):
+        element = self.find_class(selector, By.CLASS_NAME)
+        return element.get_attribute(attribute)
 
     def click(self, selector):
         self.find(selector).click()
