@@ -18,12 +18,6 @@ class Parvi:
     def select_url(self, url):
         self.robot.browser.get(url)
 
-    def cookies_confirm(self):
-        button_ok = self.SELECTORS['BUTTONS']['COOKIES']
-        if(self.robot.find(button_ok)):
-            self.robot.click(button_ok)
-            return self.robot.click(button_ok)
-
     def extract_notices(self):
         noticia = self.SELECTORS['LINK']['NOTICE']
         for noticia in self.robot.find(noticia)[:10]:
@@ -45,6 +39,5 @@ parvi = Parvi(selectors)
 
 parvi.start_browser()
 parvi.select_url('https://www.globo.com/')
-# parvi.cookies_confirm()
 parvi.extract_notices()
 parvi.save_as_csv()

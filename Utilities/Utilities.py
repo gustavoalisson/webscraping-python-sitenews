@@ -29,13 +29,6 @@ class Utilities:
         by = self._verify_type_selector(selector)
         return wait.until(EC.presence_of_all_elements_located((by, selector)))
 
-    def find_class(self, selector, by=By.CLASS_NAME):
-        wait = WebDriverWait(self.browser, 100)
-        return wait.until(EC.presence_of_all_elements_located((by, selector)))
-
     def get_attribute(self, selector, attribute):
         element = self.find_class(selector, By.CLASS_NAME)
         return element.get_attribute(attribute)
-
-    def click(self, selector):
-        self.find(selector).click()

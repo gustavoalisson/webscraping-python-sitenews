@@ -1,6 +1,6 @@
 selectors = {
     "BUTTONS": {
-        "COOKIES": '//*[@id="main-wrapper"]/header/div[1]/div/div/ul/li[1]/button'
+        "COOKIES": '//*[@id="cookie-banner-lgpd"]/div/div[2]/button'
     },
     "LINK": {
         "NOTICE": "//section//div//div//a"
